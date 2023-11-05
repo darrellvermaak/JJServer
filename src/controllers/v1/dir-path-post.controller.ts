@@ -8,7 +8,7 @@ export class DirPathPostController extends Controller {
     public defaultMethod( req: Request ): Promise<any> {
         return new Promise((resolv, reject) => {
             console.log(`dirPath : ${req.body.dirPath}`)
-            const dirPath = req.body.dirPath;
+            const dirPath = (req.body.dirPath as string).replace(' ', '\ ');
             const fromIndex = req.body.fromIndex;
             const toIndex = req.body.toIndex;
             fs.stat( dirPath, (err, fileStat) => {
@@ -20,7 +20,7 @@ export class DirPathPostController extends Controller {
                     if (fileStat.isFile()) {
                         resolv('File found.');
                     } else if (fileStat.isDirectory()) {
-                        fs.readdir(req.body.dirPath, { withFileTypes: true }, (err, files) => {
+                        fs.readdir(dirPath, { withFileTypes: true }, (err, files) => {
                             if(err) {
                                 resolv(err.message);
                             } else {

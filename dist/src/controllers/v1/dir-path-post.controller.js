@@ -31,7 +31,7 @@ class DirPathPostController extends tsoa_1.Controller {
     defaultMethod(req) {
         return new Promise((resolv, reject) => {
             console.log(`dirPath : ${req.body.dirPath}`);
-            const dirPath = req.body.dirPath;
+            const dirPath = req.body.dirPath.replace(' ', '\ ');
             const fromIndex = req.body.fromIndex;
             const toIndex = req.body.toIndex;
             fs.stat(dirPath, (err, fileStat) => {
@@ -45,7 +45,7 @@ class DirPathPostController extends tsoa_1.Controller {
                         resolv('File found.');
                     }
                     else if (fileStat.isDirectory()) {
-                        fs.readdir(req.body.dirPath, { withFileTypes: true }, (err, files) => {
+                        fs.readdir(dirPath, { withFileTypes: true }, (err, files) => {
                             if (err) {
                                 resolv(err.message);
                             }

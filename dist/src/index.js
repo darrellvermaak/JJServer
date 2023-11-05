@@ -7,6 +7,7 @@ exports.Server = void 0;
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 const master_router_1 = __importDefault(require("./routers/master-router"));
 dotenv_1.default.config();
 class Server {
@@ -16,8 +17,17 @@ class Server {
     }
 }
 exports.Server = Server;
+const corsOptions = {
+    origin: [
+        "http://localhost:8000",
+        "https://localhost:8000",
+        "http://localhost:4200",
+        "https://localhost:4200",
+    ]
+};
 const server = new Server();
 const port = process.env.PORT;
+server.app.use((0, cors_1.default)(corsOptions));
 server.app.use(body_parser_1.default.json());
 server.app.use(body_parser_1.default.urlencoded({ extended: false }));
 server.app.use('/api', server.router);

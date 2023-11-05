@@ -5,7 +5,7 @@ describe('API Tests - v1 - dirpath tests', () => {
             url: '/api/v1/dirpath',
             method: 'POST',
             body: {
-                dirPath: '/home/darrell/Devel/JobJack',
+                dirPath: '/Applications/Mozilla Thunderbird',
                 fromIndex: 0,
                 toIndex: 9
             },
