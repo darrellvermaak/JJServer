@@ -20,8 +20,8 @@ services:
     hostname: browser-client
     container_name: browser-client
     build: 
-      context: ../browser-client/.
-      dockerfile: ../browser-client/browser-client.Dockerfile
+      context: ../JJClient/.
+      dockerfile: ../JJClient/browser-client.Dockerfile
     image: browser-client:latest
     networks:
       - backend
