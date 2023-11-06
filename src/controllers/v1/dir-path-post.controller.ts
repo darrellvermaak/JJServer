@@ -62,10 +62,8 @@ export class DirPathPostController extends Controller {
             fileExt,// extension,
             fStats.birthtime.toUTCString(),
             (fStats.mode & parseInt ("777", 8)).toString (8),
-//            String(fStats.uid) + String(fStats.gid), // permissions,
             entity.isDirectory()
         );
         return fdEntity;
     }
-
 }

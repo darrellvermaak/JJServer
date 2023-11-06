@@ -81,9 +81,7 @@ class DirPathPostController extends tsoa_1.Controller {
         }
         let fdEntity = new file_data_entity_1.FileDataEntity(entity.name, entity.path, fStats.size, // fileSize,
         fileExt, // extension,
-        fStats.birthtime.toUTCString(), (fStats.mode & parseInt("777", 8)).toString(8), 
-        //            String(fStats.uid) + String(fStats.gid), // permissions,
-        entity.isDirectory());
+        fStats.birthtime.toUTCString(), (fStats.mode & parseInt("777", 8)).toString(8), entity.isDirectory());
         return fdEntity;
     }
 }
